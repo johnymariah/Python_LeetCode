@@ -1,6 +1,23 @@
-class Solution:
+class Solution: o(n2)
     def fib1(self, n: int) -> int:
         if n <=1: 
             return n
         else:
             return self.fib(n-1) + self.fib(n-2)
+
+
+solution 2:  o(n)
+   def fib(self, N: int) -> int:
+        if N == 0:
+            return 0
+        prevprev = 0
+        prev = 1
+        curr = 1
+        for i in range(1,N-1):
+            prevprev = prev
+            prev = curr
+            curr = prevprev + prev
+        
+        return curr
+        
+        
