@@ -1,0 +1,24 @@
+#Solution 1:
+
+  class Solution:
+    def reverseString(self, s):
+        s.reverse()
+
+#Solution 2: recursion, in-place ,o(n)
+
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        def swapper(left,right):
+            if left < right:
+                s[left],s[right] = s[right],s[left]
+                swapper(left+1,right-1)
+            
+        swapper(0,len(s)-1)
+
+#Approach 3: Two Pointers, Iteration, o(1)
+
+def reverseString(self, s: List[str]) -> None:
+        s_len = len(s) - 1
+        for i in range(int(len(s)/2)):
+            s[i],s[s_len] = s[s_len],s[i]
+            s_len = s_len - 1
