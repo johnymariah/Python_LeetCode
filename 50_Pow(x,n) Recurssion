@@ -1,0 +1,22 @@
+#recusrrsion - maximum recurssion reached
+
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        if n == 0:
+            return 1
+        elif n > 0:
+            return x * self.myPow(x,n-1)
+        elif n < 0:
+            return  (1/x) * self.myPow(x,abs(n) -1)
+
+
+#without recurssion #time limit exceeded - O(n)
+
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        res = 1.0
+        for i in range(abs(n)):
+            res = res * x
+        if n<0:
+            res = 1/res
+        return res
