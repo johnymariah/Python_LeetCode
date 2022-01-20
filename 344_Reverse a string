@@ -15,7 +15,7 @@ class Solution:
             
         swapper(0,len(s)-1)
 
-#Approach 3: Two Pointers, Iteration, o(1)
+#Approach 3: Iteration, o(n)
 
 def reverseString(self, s: List[str]) -> None:
         s_len = len(s) - 1
