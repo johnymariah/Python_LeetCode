@@ -1,0 +1,28 @@
+#complexity is O(N2) - issue - time limit exceeded when input is hugee , space = 0(1)
+
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        max = nums[0]
+        for i in range(len(nums)):
+            temp = 0
+            temp+=nums[i]
+            if temp > max:
+                max = temp
+            for j in range(i+1,len(nums)):
+                temp += nums[j]
+                if temp > max:
+                    max = temp
+        return max
+        
+#intutive - shorter loop - accepted submission O(N)
+
+class Solution:
+    def maxSubArray(self, nums):
+        temp = 0
+        max_sum = nums[0]
+        for num in nums:
+            if temp < 0:
+                temp = 0
+            temp += num
+            max_sum = max(temp, max_sum)
+        return max_sum
