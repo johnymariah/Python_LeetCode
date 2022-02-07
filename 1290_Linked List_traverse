@@ -1,0 +1,16 @@
+class Solution:
+    def getDecimalValue(self, head: ListNode) -> int:
+        
+        head_temp = head
+        counter = 0
+        while head_temp.next:
+            counter = counter + 1
+            head_temp = head_temp.next
+        
+        inte = 0
+        while counter>=0:
+            inte += pow(2,counter) * head.val
+            head = head.next
+            counter = counter -1
+        
+        return inte
