@@ -1,0 +1,22 @@
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        def helper(l, r):
+            while l < r:
+                if s[l] == s[r]:
+                    l += 1
+                    r -= 1
+                else:
+                    return False
+            return True
+        
+        l = 0
+        r = len(s) - 1
+        while l < r:
+            if s[l] == s[r]:
+                l += 1
+                r -= 1
+            else:
+                return helper(l, r - 1) or helper(l + 1, r)
+            #check if we drop the right charactor is the string still a palindrome
+            #check if we drop the left charactor is the string still a palindrome
+        return True
