@@ -1,0 +1,66 @@
+#solution 1: with only linked list
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        
+        current = head      # used to iterate over the original list
+        newList = None      # head of the new list
+        tail = None         # point to the last node in a new list
+
+        while current:
+            # special case for the first new node
+            if newList is None:
+                newList = ListNode(current.val, None)
+                tail = newList
+            else:
+                tail.next = ListNode()
+                tail = tail.next
+                tail.val = current.val
+                tail.next = None
+            current = current.next
+
+        #reverse the Linked list    
+        prev = None
+        curr = head
+        while curr:
+            next_node = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next_node
+        
+        list1_rev = prev
+        #compare the two linked lists
+        while newList.next and list1_rev.next:
+            if newList.val!= list1_rev.val:
+                return False
+            newList = newList.next
+            list1_rev = list1_rev.next
+            
+        return True
+        
+        
+ #solution 2 with pointers
+ 
+ class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        rev = None
+        slow = fast = head
+        while fast and fast.next:
+            fast = fast.next.next
+            rev, rev.next, slow = slow, rev, slow.next
+        if fast:
+            slow = slow.next
+        while rev and rev.val == slow.val:
+            slow = slow.next
+            rev = rev.next
+        return not rev
+        
+#solution 3 with array
+
+class Solution:
+    def isPalindrome(self, head: ListNode) -> bool:
+        vals = []
+        current_node = head
+        while current_node is not None:
+            vals.append(current_node.val)
+            current_node = current_node.next
+        return vals == vals[::-1]
